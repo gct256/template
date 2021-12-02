@@ -1,0 +1,205 @@
+{
+  "re-ducks: simple state": {
+    "prefix": "state",
+    "scope": "typescript",
+    "body": [
+      "/** タイプ: $1 */",
+      "export type ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/} = $2;",
+      "",
+      "/** $1の作成 */",
+      "export const create${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/} = (): ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/} => $3;",
+      ""
+    ]
+  },
+  "re-ducks: state": {
+    "prefix": "state",
+    "scope": "typescript",
+    "body": [
+      "import { Record } from \"immutable\";",
+      "",
+      "/** タイプ: $1 */",
+      "export type ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/}Data = {",
+      "  $2",
+      "};",
+      "",
+      "/** $1の初期データ作成 */",
+      "const create = (): ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/}Data => ({",
+      "  $3",
+      "});",
+      "",
+      "/** クラス: $1 */",
+      "export class ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/} extends Record(create()) implements ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/}Data {",
+      "  // eslint-disable-next-line no-useless-constructor",
+      "  private constructor(",
+      "    values: Partial<${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/}Data> | Iterable<[string, unknown]>",
+      "  ) {",
+      "    super(values);",
+      "  }",
+      "",
+      "  /** $1の作成 */",
+      "  static create(): ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/} {",
+      "    return new ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/}(create());",
+      "  }",
+      "}",
+      ""
+    ]
+  },
+  "re-ducks: type": {
+    "prefix": "type",
+    "scope": "typescript",
+    "body": [
+      "/** アクションタイプ: $1 */",
+      "export const ${2/([a-z]*)( +)?/${1:/upcase}${2:+_}/g} = '${TM_DIRECTORY/.*\\///}/${2/([a-z]*)( +)?/${1:/upcase}${2:+_}/g}' as const;",
+      ""
+    ]
+  },
+  "re-ducks: actions": {
+    "prefix": "actions",
+    "scope": "typescript",
+    "body": [
+      "import * as types from './types';",
+      "",
+      "$0",
+      "",
+      "/** タイプ: $1のアクション */",
+      "export type ${TM_DIRECTORY/.*\\/(.)/${2:/upcase}/}Action = ;"
+    ]
+  },
+  "re-ducks: action": {
+    "prefix": "action",
+    "scope": "typescript",
+    "body": [
+      "/** タイプ: $1のアクション */",
+      "type ${2/(^.)?([a-z]*)( +(.))?/${1:/upcase}${2}${4:/upcase}/g}Action = {",
+      "  type: typeof types.${2/([a-z]*)( +)?/${1:/upcase}${2:+_}/g};",
+      "  payload: {",
+      "    $0",
+      "  };",
+      "};",
+      "",
+      "/**",
+      " * $1のアクション作成",
+      " *",
+      " * @param payload - ペイロード",
+      " */",
+      "export const ${2/([a-z]*)( +(.))?/${1}${3:/upcase}/g} = (payload: ${2/(^.)?([a-z]*)( +(.))?/${1:/upcase}${2}${4:/upcase}/g}Action['payload']): ${2/(^.)?([a-z]*)( +(.))?/${1:/upcase}${2}${4:/upcase}/g}Action => ({",
+      "  type: types.${2/([a-z]*)( +)?/${1:/upcase}${2:+_}/g},",
+      "  payload,",
+      "});"
+    ]
+  },
+  "re-ducks: reducer": {
+    "prefix": "reducer",
+    "scope": "typescript",
+    "body": [
+      "import { ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/}Action } from './actions';",
+      "import { ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/} } from './state';",
+      "import * as types from './types';",
+      "",
+      "/**",
+      " * $1のreducer",
+      " *",
+      " * @param state - ステート",
+      " * @param action - アクション",
+      " */",
+      "export const ${TM_DIRECTORY/.*\\///}Reducer = (",
+      "  state: ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/} = ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/}.create(),",
+      "  action: ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/}Action = undefined",
+      "): ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/} => {",
+      "  switch (action?.type) {",
+      "    case types.$0: {",
+      "      return state;",
+      "    }",
+      "",
+      "    default:",
+      "      return state;",
+      "  }",
+      "};"
+    ]
+  },
+  "re-ducks: operations": {
+    "prefix": "operations",
+    "scope": "typescript",
+    "body": [
+      "import { ${TM_DIRECTORY/.*\\/([^\\/])([^\\/]*)\\/.*/${1:/upcase}${2}/}Dispatch } from '../';",
+      "",
+      "import * as actions from './actions';",
+      "",
+      "$0"
+    ]
+  },
+  "re-ducks: operation": {
+    "prefix": "operation",
+    "scope": "typescript",
+    "body": [
+      "/**",
+      " * $1のoperation",
+      " *",
+      " * @param dispatch - redux dispatch",
+      " */",
+      "export const ${2/([a-z]*)( +(.))?/${1}${3:/upcase}/g} = async (dispatch: ${TM_DIRECTORY/.*\\/([^\\/])([^\\/]*)\\/.*/${1:/upcase}${2}/}Dispatch$4): Promise<void> => {",
+      "  dispatch(actions.${2/([a-z]*)( +(.))?/${1}${3:/upcase}/g}($0));",
+      "};",
+      ""
+    ]
+  },
+  "re-ducks: selectors": {
+    "prefix": "selectors",
+    "scope": "typescript",
+    "body": [
+      "import { ${TM_DIRECTORY/.*\\/([^\\/])([^\\/]*)\\/.*/${1:/upcase}${2}/}State } from '../';",
+      "",
+      "import { ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/} } from './state';",
+      "",
+      "$0"
+    ]
+  },
+  "re-ducks: selector": {
+    "prefix": "selector",
+    "scope": "typescript",
+    "body": [
+      "/**",
+      " * $1のselector",
+      " *",
+      " * @param state - redux state",
+      " */",
+      "export const ${2/([a-z]*)( +(.))?/${1}${3:/upcase}/g} = (state: ${TM_DIRECTORY/.*\\/([^\\/])([^\\/]*)\\/.*/${1:/upcase}${2}/}State): $3 => $0;",
+      ""
+    ]
+  },
+  "re-ducks: index": {
+    "prefix": "index",
+    "scope": "typescript",
+    "body": [
+      "import * as ${TM_DIRECTORY/.*\\///}Operations from './operations';",
+      "import * as ${TM_DIRECTORY/.*\\///}Selectors from './selectors';",
+      "",
+      "export { ${TM_DIRECTORY/.*\\///}Operations, ${TM_DIRECTORY/.*\\///}Selectors };",
+      ""
+    ]
+  },
+  "re-ducks: combined index": {
+    "prefix": "combined",
+    "scope": "typescript",
+    "body": [
+      "import { AnyAction, Dispatch, combineReducers } from 'redux';",
+      "",
+      "/** タイプ: $1のstate */",
+      "export type ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/}State = {",
+      "  $3",
+      "};",
+      "",
+      "/** タイプ: $1のaction */",
+      "export type ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/}Action = $4 | AnyAction;",
+      "",
+      "/** タイプ: $1のdispatch */",
+      "export type ${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/}Dispatch = Dispatch<${TM_DIRECTORY/.*\\/(.)/${1:/upcase}/}Action>;",
+      "",
+      "/** $1のreducer */",
+      "export const ${TM_DIRECTORY/.*\\///}Reducer = combineReducers({",
+      "  $5",
+      "});",
+      ""
+    ]
+  }
+}
