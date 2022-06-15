@@ -1,6 +1,6 @@
 import esbuildServe from "esbuild-serve";
 
-const dist = process.env.NODE_ENV === "production";
+const dist = !process.argv.includes('-w');
 
 esbuildServe(
   {
@@ -11,7 +11,7 @@ esbuildServe(
     target: "esnext",
     define: {
       "process.env.NODE_ENV": JSON.stringify(
-        process.env.NODE_ENV ?? "development",
+        dist : 'production' : "development",
       ),
     },
     minify: dist,
