@@ -5,17 +5,17 @@
     "body": [
       "import * as React from 'react';",
       "",
-      "/** porps: ${1:ビュー名} */",
+      "/** Props: ${TM_FILENAME_BASE/\\.//g} */",
       "type ${TM_FILENAME_BASE/\\.//g}Props = {",
-      "  $2",
+      "  $1",
       "};",
       "",
-      "/** ビュー: $1 */",
+      "/** View: ${TM_FILENAME_BASE/\\.//g} */",
       "export const ${TM_FILENAME_BASE/\\.//g}: React.FC<${TM_FILENAME_BASE/\\.//g}Props> = ({",
-      "  children,$3",
-      "}: React.PropsWithChildren<${TM_FILENAME_BASE/\\.//g}Props>): React.ReactElement | null => (",
-      "  <div>{children}</div>$0",
-      ");",
+      "  children,$2",
+      "}: React.PropsWithChildren<${TM_FILENAME_BASE/\\.//g}Props>): React.ReactElement | null => {",
+      "  $0",
+      "};",
       "",
       "${TM_FILENAME_BASE/\\.//g}.displayName = '${TM_FILENAME_BASE}';"
     ]
@@ -26,17 +26,17 @@
     "body": [
       "import * as React from 'react';",
       "",
-      "/** porps: ${1:ビュー名} */",
+      "/** Props: ${TM_FILENAME_BASE/\\.//g} */",
       "type ${TM_FILENAME_BASE/\\.//g}Props = {",
-      "  $2",
+      "  $1",
       "};",
       "",
-      "/** ビュー: $1 */",
-      "export const ${TM_FILENAME_BASE/\\.//g}: React.VFC<${TM_FILENAME_BASE/\\.//g}Props> = ({",
-      "  $3",
-      "}: ${TM_FILENAME_BASE/\\.//g}Props): React.ReactElement | null => (",
+      "/** View: ${TM_FILENAME_BASE/\\.//g} */",
+      "export const ${TM_FILENAME_BASE/\\.//g}: React.FC<${TM_FILENAME_BASE/\\.//g}Props> = ({",
+      "  $2",
+      "}: ${TM_FILENAME_BASE/\\.//g}Props): React.ReactElement | null => {",
       "  $0",
-      ");",
+      "};",
       "",
       "${TM_FILENAME_BASE/\\.//g}.displayName = '${TM_FILENAME_BASE}';"
     ]
@@ -48,10 +48,10 @@
     "body": [
       "import * as React from 'react';",
       "",
-      "/** ビュー: $1 */",
-      "export const ${TM_FILENAME_BASE/\\.//g}: React.VFC = (): React.ReactElement | null => (",
+      "/** View: ${TM_FILENAME_BASE/\\.//g} */",
+      "export const ${TM_FILENAME_BASE/\\.//g}: React.FC = (): React.ReactElement | null => {",
       "  $0",
-      ");",
+      "};",
       "",
       "${TM_FILENAME_BASE/\\.//g}.displayName = '${TM_FILENAME_BASE}';"
     ]
