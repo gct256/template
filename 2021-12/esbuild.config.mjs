@@ -11,7 +11,7 @@ esbuildServe(
     target: "esnext",
     define: {
       "process.env.NODE_ENV": JSON.stringify(
-        dist : 'production' : "development",
+        dist ? 'production' : "development",
       ),
     },
     minify: dist,
