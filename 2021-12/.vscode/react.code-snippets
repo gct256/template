@@ -1,5 +1,5 @@
 {
-  "react component (props + children)": {
+  "react component": {
     "prefix": "react",
     "scope": "typescriptreact",
     "body": [
@@ -8,27 +8,7 @@
       "/** Props: ${TM_FILENAME_BASE/\\.//g} */",
       "type ${TM_FILENAME_BASE/\\.//g}Props = {",
       "  $1",
-      "};",
-      "",
-      "/** View: ${TM_FILENAME_BASE/\\.//g} */",
-      "export const ${TM_FILENAME_BASE/\\.//g}: React.FC<${TM_FILENAME_BASE/\\.//g}Props> = ({",
-      "  children,$2",
-      "}: React.PropsWithChildren<${TM_FILENAME_BASE/\\.//g}Props>): React.ReactElement | null => {",
-      "  $0",
-      "};",
-      "",
-      "${TM_FILENAME_BASE/\\.//g}.displayName = '${TM_FILENAME_BASE}';"
-    ]
-  },
-  "react component (props)": {
-    "prefix": "react",
-    "scope": "typescriptreact",
-    "body": [
-      "import * as React from 'react';",
-      "",
-      "/** Props: ${TM_FILENAME_BASE/\\.//g} */",
-      "type ${TM_FILENAME_BASE/\\.//g}Props = {",
-      "  $1",
+      "  children?: React.ReactNode;",
       "};",
       "",
       "/** View: ${TM_FILENAME_BASE/\\.//g} */",
@@ -36,12 +16,13 @@
       "  $2",
       "}: ${TM_FILENAME_BASE/\\.//g}Props): React.ReactElement | null => {",
       "  $0",
+      "  return <>{children}</>;",
       "};",
       "",
       "${TM_FILENAME_BASE/\\.//g}.displayName = '${TM_FILENAME_BASE}';"
     ]
   },
-  "react component": {
+  "react component (without props)": {
     "prefix": "react",
     "scope": "typescriptreact",
     "description": "compact",
@@ -51,6 +32,7 @@
       "/** View: ${TM_FILENAME_BASE/\\.//g} */",
       "export const ${TM_FILENAME_BASE/\\.//g}: React.FC = (): React.ReactElement | null => {",
       "  $0",
+      "  return <>{childre...}</>;",
       "};",
       "",
       "${TM_FILENAME_BASE/\\.//g}.displayName = '${TM_FILENAME_BASE}';"
