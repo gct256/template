@@ -14,6 +14,7 @@
       "/** View: ${TM_FILENAME_BASE/\\.//g} */",
       "export const ${TM_FILENAME_BASE/\\.//g}: React.FC<${TM_FILENAME_BASE/\\.//g}Props> = ({",
       "  $2",
+      "  children",
       "}: ${TM_FILENAME_BASE/\\.//g}Props): React.ReactElement | null => {",
       "  $0",
       "  return <>{children}</>;",
@@ -32,7 +33,7 @@
       "/** View: ${TM_FILENAME_BASE/\\.//g} */",
       "export const ${TM_FILENAME_BASE/\\.//g}: React.FC = (): React.ReactElement | null => {",
       "  $0",
-      "  return <>{childre...}</>;",
+      "  return <>{...}</>;",
       "};",
       "",
       "${TM_FILENAME_BASE/\\.//g}.displayName = '${TM_FILENAME_BASE}';"
