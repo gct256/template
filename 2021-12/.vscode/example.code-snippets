@@ -8,7 +8,8 @@
       "dir name    --> LargeCamelCase   : ${TM_DIRECTORY/.*[\\/\\\\](.)|(\\.)?/${1:/upcase}/g}",
       "dir name    --> smallCamelCase   : ${TM_DIRECTORY/.*[\\/\\\\](.)|(\\.)?/${1:/downcase}/g}",
       "file name   --> LargeCamelCase   : ${TM_FILENAME_BASE/(^.)?\\.?/${1:/upcase}/g}",
-      "file name   --> smallCamelCase   : ${TM_FILENAME_BASE/(^.)?\\.?/${1:/downcase}/g}"
+      "file name   --> smallCamelCase   : ${TM_FILENAME_BASE/(^.)?\\.?/${1:/downcase}/g}",
+      "file name   --> LARGE_SNAKE_CASE : ${TM_FILENAME_BASE/([a-z]*)([A-Z]+)?/${1:/upcase}${2:+_}${2}/g}"
     ]
   }
 }

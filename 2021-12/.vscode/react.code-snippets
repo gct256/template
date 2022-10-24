@@ -8,6 +8,28 @@
       "/** Props: ${TM_FILENAME_BASE/\\.//g} */",
       "type ${TM_FILENAME_BASE/\\.//g}Props = {",
       "  $1",
+      "};",
+      "",
+      "/** View: ${TM_FILENAME_BASE/\\.//g} */",
+      "export const ${TM_FILENAME_BASE/\\.//g}: React.FC<${TM_FILENAME_BASE/\\.//g}Props> = ({",
+      "  $2",
+      "}: ${TM_FILENAME_BASE/\\.//g}Props): React.ReactElement | null => {",
+      "  $0",
+      "  return <>{children}</>;",
+      "};",
+      "",
+      "${TM_FILENAME_BASE/\\.//g}.displayName = '${TM_FILENAME_BASE}';"
+    ]
+  },
+  "react component (has children)": {
+    "prefix": "react",
+    "scope": "typescriptreact",
+    "body": [
+      "import * as React from 'react';",
+      "",
+      "/** Props: ${TM_FILENAME_BASE/\\.//g} */",
+      "type ${TM_FILENAME_BASE/\\.//g}Props = {",
+      "  $1",
       "  children?: React.ReactNode;",
       "};",
       "",
@@ -37,6 +59,27 @@
       "};",
       "",
       "${TM_FILENAME_BASE/\\.//g}.displayName = '${TM_FILENAME_BASE}';"
+    ]
+  },
+  "useCallback": {
+    "prefix": "useCallback",
+    "scope": "typescriptreact",
+    "body": [
+      "React.useCallback(($1) => {",
+      "  $0",
+      "}, []);",
+    ]
+  },
+  "pseudo enum": {
+    "prefix": "enum",
+    "scope": "typescriptreact",
+    "body": [
+      "/** Def: $1 */",
+      "export const ${TM_FILENAME_BASE/([a-z]*)([A-Z]+)?/${1:/upcase}${2:+_}${2}/g} = {",
+      "} as const;",
+      "",
+      "/** Type: $1 */",
+      "export type ${TM_FILENAME_BASE/(^.)?\\.?/${1:/upcase}/g} = typeof ${TM_FILENAME_BASE/([a-z]*)([A-Z]+)?/${1:/upcase}${2:+_}${2}/g}[keyof typeof ${TM_FILENAME_BASE/([a-z]*)([A-Z]+)?/${1:/upcase}${2:+_}${2}/g}];",
     ]
   }
 }
