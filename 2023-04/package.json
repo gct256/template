@@ -1,0 +1,34 @@
+{
+  "devDependencies": {
+    "@gct256/eslint-config": "git+https://github.com/gct256/eslint-config.git#v1.1.0",
+    "@types/node": "^18.15.11",
+    "@types/react": "^18.0.31",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "esbuild": "^0.17.14",
+    "esbuild-serve": "^1.0.1",
+    "eslint": "^8.37.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.8.7",
+    "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "engines": {
+    "node": ">=18",
+    "npm": "use pnpm !",
+    "yarn": "use pnpm !",
+    "pnpm": ">=7"
+  },
+  "scripts": {
+    "serve": "node esbuild.config.mjs -w"
+  }
+}
