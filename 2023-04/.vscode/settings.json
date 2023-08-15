@@ -8,18 +8,17 @@
     "**/Thumbs.db": true,
     "**/node_modules": true
   },
-
-  "editor.trimAutoWhitespace": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
-
-  "editor.formatOnSave": true,
-
   "files.eol": "\n",
-  
   "files.autoGuessEncoding": false,
   "files.encoding": "utf8",
+  
+  "editor.trimAutoWhitespace": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
 
   "explorer.compactFolders": false,
 
