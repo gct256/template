@@ -1,0 +1,15 @@
+{
+  "change case example": {
+    "prefix": "example",
+    "body": [
+      "${1:foo bar baz} --> LARGE_SNAKE_CASE : ${1/([a-z]*)( +)?/${1:/upcase}${2:+_}/g}",
+      "$1 --> smallCamelCase   : ${1/([a-z]*)( +(.))?/${1}${3:/upcase}/g}",
+      "$1 --> LargeCamelCase   : ${1/(^.)?([a-z]*)( +(.))?/${1:/upcase}${2}${4:/upcase}/g}",
+      "dir name    --> LargeCamelCase   : ${TM_DIRECTORY/.*[\\/\\\\](.)|(\\.)?/${1:/upcase}/g}",
+      "dir name    --> smallCamelCase   : ${TM_DIRECTORY/.*[\\/\\\\](.)|(\\.)?/${1:/downcase}/g}",
+      "file name   --> LargeCamelCase   : ${TM_FILENAME_BASE/(^.)?\\.?/${1:/upcase}/g}",
+      "file name   --> smallCamelCase   : ${TM_FILENAME_BASE/(^.)?\\.?/${1:/downcase}/g}",
+      "file name   --> LARGE_SNAKE_CASE : ${TM_FILENAME_BASE/([a-z]*)([A-Z]+)?/${1:/upcase}${2:+_}${2}/g}"
+    ]
+  }
+}

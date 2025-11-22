@@ -1,0 +1,4 @@
+packages:
+  - bun
+  - node
+  - vite
